@@ -1,0 +1,144 @@
+.homepage {
+  width: 100%;
+  min-height: 90vh;
+  position: relative;
+  display: flex;
+  padding: 0 2.5rem;
+  padding-top: 2.5rem;
+  flex-direction: column;
+
+  .no-result {
+    width: 100%;
+    height: 100%;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bookshelf-title {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    padding-left: 2rem;
+
+    .divider {
+      flex: 1;
+      border: 1px solid $stroke;
+      height: 0;
+      margin-left: 2rem;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: 600;
+    }
+
+    .category {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-left: 2rem;
+    }
+  }
+
+  .card-container {
+    flex: 1;
+    margin: 1rem 2rem;
+    // border: 2px solid $stroke;
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    // grid-column-gap: 3rem;
+    // grid-row-gap: 2.5rem;
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.2rem;
+      padding-bottom: 1rem;
+      padding-left: 0.75rem;
+
+      .card {
+        width: 350px;
+        min-width: 350px;
+        height: 100%;
+        padding: 1.5rem;
+        background-color: $cardBg;
+        // border: 2px solid $stroke;
+        position: relative;
+        border-radius: 25px;
+        display: flex;
+        gap: 1rem;
+        transition: all 0.25s ease-in;
+
+        &:hover {
+          box-shadow: 1px 1px 5px $accentColor;
+        }
+
+        .info {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          gap: 1rem;
+
+          .title {
+            font-size: 1.5rem;
+            height: 4rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+
+          .author {
+            color: gray;
+          }
+        }
+
+        .cover {
+          width: 110px;
+          height: 150px;
+          background-color: white;
+        }
+
+        .status {
+          position: absolute;
+          background-color: $accentColor;
+          color: $btnText;
+          // border: 2px solid $stroke;
+          left: -0.5rem;
+          bottom: 1.5rem;
+          padding: 0.1rem 0.75rem;
+          border-radius: 5px;
+          box-shadow: 1px 1px 5px $accentColor;
+        }
+
+        .Reading {
+          background-color: $red;
+          color: $btnText;
+        }
+
+        .Finished {
+          background-color: $secondary;
+          color: $stroke;
+        }
+
+        .handleLayer {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-color: transparent;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .recent {
+      flex-wrap: nowrap;
+      overflow: scroll;
+    }
+  }
+}

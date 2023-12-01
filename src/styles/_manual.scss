@@ -1,0 +1,128 @@
+.book-data {
+  .bgPic {
+    width: 100vw;
+    min-height: 85vh;
+    position: relative;
+    background-image: url(../images/Reading\ glasses-cuate.png);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $themeColor;
+      opacity: 80%;
+      z-index: 0;
+    }
+  }
+
+  .manualForm {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    height: 55vh;
+    background: rgb(255, 255, 254, 0.8);
+    border: 2px solid $accentColor;
+    padding: 1.5rem;
+    border-radius: 20px;
+
+    .errorMsg {
+      color: $red;
+    }
+
+    .inputContainer {
+      width: 100%;
+      max-width: 500px;
+      margin: 0.5rem;
+      //   background: rgba(255, 255, 255, 0.8);
+      border-bottom: $stroke 2px solid;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+
+      label {
+        font-weight: 600;
+      }
+
+      #bookTitle,
+      #bookAuthor {
+        background: transparent;
+        border: 0;
+        outline: none;
+        flex: 1;
+        font-size: 1rem;
+        margin-left: 1rem;
+      }
+    }
+    .cover {
+      width: 30%;
+      background: none;
+      border: none;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      // align-items: center;
+
+      .cover-box {
+        width: 100%;
+        height: 90%;
+        overflow: hidden;
+        position: relative;
+
+        img {
+          z-index: -1;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        label {
+          flex: 1;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.5rem;
+          border: 2px dashed gray;
+          color: gray;
+        }
+
+        #bookCover {
+          display: none;
+        }
+      }
+    }
+
+    .status {
+      border: none;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .submitBtn {
+      width: 100%;
+      height: 10%;
+      margin: 0.5rem;
+      background-color: $btnColor;
+      color: $btnText;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.25rem;
+      font-weight: 300;
+      cursor: pointer;
+    }
+  }
+}

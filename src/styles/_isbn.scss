@@ -1,0 +1,102 @@
+.isbn-input {
+  .bgPic {
+    width: 100vw;
+    min-height: 85vh;
+    position: relative;
+    background-image: url(../images/Reading\ glasses-cuate.png);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $themeColor;
+      opacity: 80%;
+      z-index: 0;
+    }
+  }
+  .search {
+    display: flex;
+    width: 100%;
+    height: 60vh;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    z-index: 5;
+
+    .searchBar {
+      width: 100%;
+      max-width: 500px;
+      margin: 5rem;
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      border-radius: 60px;
+      border: 1px $accentColor solid;
+      padding: 0.5rem 1rem;
+
+      input {
+        background: transparent;
+        flex: 1;
+        border: 0;
+        outline: none;
+        font-size: 1rem;
+
+        &::placeholder {
+          color: $stroke;
+          opacity: 50%;
+        }
+      }
+      .searchBtn {
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+        border: none;
+        background-color: $btnColor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        i {
+          font-size: 1.5rem;
+          color: $btnText;
+        }
+
+        &:hover {
+          opacity: 80%;
+        }
+      }
+    }
+
+    .card {
+      background: $themeColor;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      width: 100%;
+      max-width: 500px;
+      background-color: $secondary;
+      border-radius: 15px;
+      border: $accentColor 2px solid;
+
+      .add-book {
+        border: none;
+        background-color: transparent;
+
+        i {
+          font-size: 2rem;
+          color: $stroke;
+        }
+      }
+    }
+  }
+}

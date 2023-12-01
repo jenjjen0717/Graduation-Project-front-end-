@@ -1,0 +1,436 @@
+.book-note {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 90vh;
+
+  .form {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    padding: 1.5rem;
+    border-radius: 20px;
+    position: relative;
+
+    .closeBtn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      width: 2rem;
+      height: 2rem;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      i {
+        color: $stroke;
+        font-size: 2rem;
+      }
+    }
+
+    .errorMsg {
+      color: $red;
+    }
+
+    .inputContainer {
+      width: 100%;
+      max-width: 500px;
+      margin: 0.5rem;
+      //   background: rgba(255, 255, 255, 0.8);
+      border-bottom: $stroke 2px solid;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+
+      label {
+        font-weight: 600;
+      }
+
+      .textInput {
+        background: transparent;
+        border: 0;
+        outline: none;
+        flex: 1;
+        font-size: 1rem;
+        margin-left: 1rem;
+      }
+    }
+
+    .excerpt-input {
+      display: flex;
+      height: 30%;
+      width: 100%;
+      gap: 1rem;
+
+      .input {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        textarea {
+          flex: 1;
+          font-size: 1rem;
+          padding: 0.5rem;
+        }
+
+        label {
+          margin-top: 1.5rem;
+          margin-left: 0.5rem;
+          font-weight: 600;
+        }
+
+        input {
+          height: 100%;
+          width: 5rem;
+          font-size: 1.5rem;
+          padding: 0.5rem;
+          // border: none;
+          // border-bottom: solid $stroke 2px;
+        }
+      }
+
+      .paragraph {
+        flex: 1;
+      }
+    }
+
+    .note {
+      flex: 1;
+      height: 40%;
+      width: 100%;
+      margin: 1rem 0rem;
+
+      label {
+        margin: 0.5rem;
+        font-weight: 600;
+      }
+
+      textarea {
+        width: 100%;
+        height: 80%;
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+    }
+
+    .cover {
+      width: 30%;
+      background: none;
+      border: none;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      // align-items: center;
+
+      .cover-box {
+        width: 100%;
+        height: 90%;
+        overflow: hidden;
+        position: relative;
+
+        img {
+          z-index: -1;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        label {
+          flex: 1;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.5rem;
+          border: 2px dashed gray;
+          color: gray;
+        }
+
+        #bookCover {
+          display: none;
+        }
+      }
+    }
+
+    .status {
+      border: none;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .submitBtn {
+      width: 100%;
+      height: 10%;
+      margin: 0.5rem;
+      background-color: $btnColor;
+      color: $btnText;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.25rem;
+      font-weight: 300;
+      cursor: pointer;
+    }
+  }
+
+  .info-excerpt {
+    max-width: 100%;
+    height: 90vh;
+    // border: solid 2px black;
+    padding: 2rem;
+    padding-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      min-width: 400px;
+      height: 100%;
+      // border: 2px $accentColor solid;
+      background-color: $cardBg;
+      border-radius: 10px;
+      padding: 1.5rem;
+
+      .bookCover {
+        // border: blue 2px solid;
+        height: 50%;
+        margin: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .coverBg {
+          img {
+            width: 225px;
+            height: 300px;
+            border: 2px solid $stroke;
+          }
+        }
+      }
+
+      .bookInfo {
+        flex: 1;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .info-container {
+          flex: 1;
+
+          .bookTitle {
+            margin-bottom: 1rem;
+            height: 40%;
+            color: $stroke;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+
+          .bookAuthor {
+            color: $stroke;
+            opacity: 50%;
+            margin-bottom: 0.5rem;
+          }
+        }
+
+        .edit {
+          height: 20%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          button {
+            width: 50%;
+            height: 75%;
+            border: none;
+            background-color: $btnColor;
+            color: $btnText;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    .excerpt {
+      flex: 1;
+      margin-left: 2rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      .excerpt-title {
+        height: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+
+        h2 {
+          flex: 1;
+        }
+
+        button {
+          width: 2rem;
+          height: 2rem;
+          border: none;
+          background-color: transparent;
+          cursor: pointer;
+
+          i {
+            font-size: 2rem;
+          }
+        }
+      }
+
+      hr {
+        border-top: 2px solid $stroke;
+      }
+
+      .excerpt-cards {
+        flex: 1;
+        padding: 1rem 0.5rem;
+        width: 100%;
+        height: 95%;
+        margin-top: 1rem;
+        overflow: scroll;
+
+        .cards {
+          min-height: 100%;
+          max-width: 100%;
+          column-count: 2;
+          column-gap: 1rem;
+          transition: all 0.5s ease-out;
+
+          .card {
+            box-sizing: border-box;
+            break-inside: avoid;
+            margin: 0 auto 1rem;
+            border: $stroke 2px solid;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            animation: add-card 0.25s ease-in;
+
+            .paragraph-block {
+              background-color: $accentColor;
+              color: $btnText;
+              padding: 1rem;
+              display: flex;
+              justify-content: space-between;
+              gap: 1rem;
+
+              .page-block {
+                opacity: 50%;
+              }
+            }
+
+            .note-block {
+              min-height: 2rem;
+              padding: 1rem;
+              background-color: $btnText;
+            }
+
+            // .optionBtn {
+            //   font-size: 1rem;
+            //   position: absolute;
+            //   bottom: 0.25rem;
+            //   right: 0.5rem;
+            // }
+
+            .option {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 2rem;
+              width: 100%;
+              background-color: $secondary;
+              opacity: 0;
+              transform: translateY(100%);
+              transition: all 0.25s ease-in;
+              display: flex;
+              justify-content: space-around;
+
+              i {
+                font-size: 1.25rem;
+                height: 100%;
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-top: 2px solid $stroke;
+                cursor: pointer;
+              }
+
+              .bx-edit-alt {
+                border-left: 2px solid $stroke;
+                &:hover {
+                  background-color: $btnColor;
+                  opacity: 80%;
+                  color: $btnText;
+                }
+              }
+
+              .bx-trash {
+                &:hover {
+                  background-color: $red;
+                  color: $btnText;
+                }
+              }
+            }
+          }
+
+          .card:hover > .option {
+            transform: translateY(0);
+            // height: 2rem;
+
+            opacity: 1;
+          }
+
+          .close {
+            animation: delete-card 0.5s ease-out;
+          }
+        }
+      }
+    }
+  }
+
+  .review {
+    max-width: 100%;
+    height: 90vh;
+    border: solid 2px black;
+  }
+}
+
+@keyframes add-card {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes delete-card {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}

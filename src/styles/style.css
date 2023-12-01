@@ -1,0 +1,1109 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fffffe;
+  position: relative;
+  font-family: "Nunito", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.header {
+  background-color: #f9f4ef;
+  width: 100%;
+  height: 10vh;
+  padding: 1.25rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  transition: all 0.5s ease;
+  position: sticky;
+  top: 0;
+}
+.header .logo a {
+  width: 100%;
+  height: 10vh;
+  font-size: 1.25rem;
+  font-weight: bolder;
+  color: #716040;
+  text-decoration: none;
+}
+.header .logo a img {
+  width: 100%;
+  height: 6vh;
+}
+.header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header nav .navItem {
+  text-align: center;
+  text-decoration: none;
+  color: #716040;
+  font-size: 1rem;
+  margin-left: 2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 0.5rem;
+  transition: all 0.25s ease;
+}
+.header nav .navItem:hover {
+  color: #020826;
+}
+.header nav .navItem .search-bar {
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+.header nav .navItem .search-bar .search {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.header nav .navItem .search-bar .search .searchInput {
+  padding: 0 1rem;
+  border: none;
+  background-color: transparent;
+  border-bottom: #020826 2px solid;
+  opacity: 0;
+  width: 0;
+  transition: all 0.25s linear;
+}
+.header nav .navItem .search-bar .search .search-expanded {
+  width: 15vw;
+  opacity: 1;
+}
+.header nav .navItem .search-bar .search i {
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+.header nav .loginBtn {
+  border-radius: 5px;
+  background-color: #8c7851;
+  color: #fffffe;
+}
+.header nav .loginBtn:hover {
+  border: #8c7851 1px solid;
+  background-color: #fffffe;
+  color: #020826;
+}
+
+.addBtn {
+  position: fixed;
+  bottom: 3vw;
+  right: 5vw;
+  cursor: pointer;
+  z-index: 500;
+}
+.addBtn .btn-plus {
+  z-index: 5;
+  box-shadow: 1px 1px 5px #020826;
+}
+.addBtn .btn-plus:hover {
+  opacity: 50%;
+}
+.addBtn .btn {
+  width: 4rem;
+  height: 4rem;
+  background-color: #8c7851;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addBtn .btn i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  height: 100%;
+  color: #fffffe;
+}
+.addBtn .floatingBtn {
+  position: absolute;
+  margin: 0;
+  bottom: 4rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transform: scale(0);
+  transform-origin: 85% bottom;
+}
+.addBtn .floatingBtn .btn-option {
+  background-color: #f9f4ef;
+  border: 2px solid #8c7851;
+  margin: 0.5rem 0rem;
+  text-decoration: none;
+}
+.addBtn .floatingBtn .btn-option:hover {
+  opacity: 60%;
+}
+.addBtn .floatingBtn .btn-option .btnLabel {
+  position: absolute;
+  right: 5rem;
+  color: #020826;
+}
+.addBtn .floatingBtn .btn-option i {
+  color: #020826;
+}
+.addBtn .btn-plus:hover + .floatingBtn,
+.addBtn .floatingBtn:hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal {
+  position: fixed;
+  z-index: 500;
+  top: 25%;
+  left: 35%;
+  width: 500px;
+  height: 55%;
+  background-color: #fffffe;
+  border: #716040 2px solid;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: all 0.25s ease-out;
+}
+
+@keyframes pop-up {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.breadCrumbs .breadCrumb {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0rem 3rem;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+}
+.breadCrumbs .breadCrumb ul {
+  display: flex;
+  list-style: none;
+  gap: 0.75rem;
+}
+.breadCrumbs .breadCrumb ul li {
+  align-self: center;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+.breadCrumbs .breadCrumb ul li a,
+.breadCrumbs .breadCrumb ul li i {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #020826;
+}
+.breadCrumbs .breadCrumb ul li a {
+  display: flex;
+  align-items: center;
+}
+.breadCrumbs .breadCrumb ul li a i {
+  font-size: 1.5rem;
+}
+.breadCrumbs .breadCrumb ul li a i:hover {
+  color: #eaddcf;
+}
+.breadCrumbs .breadCrumb ul li i {
+  font-size: 1.5rem;
+}
+
+.loginPage {
+  position: relative;
+}
+.loginPage .login-bg {
+  background-image: url(../images/Bibliophile-bro.png);
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -10;
+}
+.loginPage .login-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fffffe;
+  opacity: 50%;
+  z-index: 0;
+}
+
+.login-register {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-register .box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  border: #020826 2px solid;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 24, 56, 0.5);
+  height: 440px;
+  width: 600px;
+  padding: 40px;
+  overflow: hidden;
+}
+.login-register .box .backBtn {
+  z-index: 10;
+}
+.login-register .box .backBtn i {
+  color: #716040;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.login-register .box .form {
+  width: 100%;
+  padding: 2rem;
+}
+.login-register .box .form h2 {
+  text-align: center;
+  font-size: 2.5rem;
+}
+.login-register .box .form .formBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-register .box .form .formBox .errorMsg {
+  color: #f25042;
+}
+.login-register .box .form .formBox .input-box {
+  position: relative;
+  width: 80%;
+  height: 35px;
+  border-bottom: #001838 2px solid;
+  margin: 1.25rem 0;
+}
+.login-register .box .form .formBox .input-box input {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+.login-register .box .form .formBox .submitBtn {
+  width: 80%;
+  height: 35px;
+  margin: 1rem;
+  background-color: #8c7851;
+  color: #fffffe;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  cursor: pointer;
+}
+.login-register .box .form .formBox .switch {
+  display: flex;
+  color: #020826;
+  gap: 0.5rem;
+}
+.login-register .box .form .formBox .switch a {
+  text-decoration: none;
+  color: #020826;
+  cursor: pointer;
+}
+.login-register .box .form .formBox .switch a:hover {
+  text-decoration: underline;
+}
+.login-register .box .login {
+  transition: all 1s ease;
+  transform: translateX(0);
+}
+.login-register .box .register {
+  position: absolute;
+  transition: all 1s ease;
+  transform: translateX(600px);
+}
+.login-register .switch-page .login {
+  transition: all 1s ease;
+  transform: translateX(-600px);
+}
+.login-register .switch-page .register {
+  transition: all 1s ease;
+  transform: translate(0);
+}
+
+.homepage {
+  width: 100%;
+  min-height: 90vh;
+  position: relative;
+  display: flex;
+  padding: 0 2.5rem;
+  padding-top: 2.5rem;
+  flex-direction: column;
+}
+.homepage .no-result {
+  width: 100%;
+  height: 100%;
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homepage .bookshelf-title {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  padding-left: 2rem;
+}
+.homepage .bookshelf-title .divider {
+  flex: 1;
+  border: 1px solid #020826;
+  height: 0;
+  margin-left: 2rem;
+}
+.homepage .bookshelf-title .title {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.homepage .bookshelf-title .category {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-left: 2rem;
+}
+.homepage .card-container {
+  flex: 1;
+  margin: 1rem 2rem;
+}
+.homepage .card-container .cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.2rem;
+  padding-bottom: 1rem;
+  padding-left: 0.75rem;
+}
+.homepage .card-container .cards .card {
+  width: 350px;
+  min-width: 350px;
+  height: 100%;
+  padding: 1.5rem;
+  background-color: #eaddcf;
+  position: relative;
+  border-radius: 25px;
+  display: flex;
+  gap: 1rem;
+  transition: all 0.25s ease-in;
+}
+.homepage .card-container .cards .card:hover {
+  box-shadow: 1px 1px 5px #716040;
+}
+.homepage .card-container .cards .card .info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+}
+.homepage .card-container .cards .card .info .title {
+  font-size: 1.5rem;
+  height: 4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.homepage .card-container .cards .card .info .author {
+  color: gray;
+}
+.homepage .card-container .cards .card .cover {
+  width: 110px;
+  height: 150px;
+  background-color: white;
+}
+.homepage .card-container .cards .card .status {
+  position: absolute;
+  background-color: #716040;
+  color: #fffffe;
+  left: -0.5rem;
+  bottom: 1.5rem;
+  padding: 0.1rem 0.75rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #716040;
+}
+.homepage .card-container .cards .card .Reading {
+  background-color: #f25042;
+  color: #fffffe;
+}
+.homepage .card-container .cards .card .Finished {
+  background-color: #f9f4ef;
+  color: #020826;
+}
+.homepage .card-container .cards .card .handleLayer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+.homepage .card-container .recent {
+  flex-wrap: nowrap;
+  overflow: scroll;
+}
+
+.isbn-input .bgPic {
+  width: 100vw;
+  min-height: 85vh;
+  position: relative;
+  background-image: url(../images/Reading\ glasses-cuate.png);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.isbn-input .bgPic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fffffe;
+  opacity: 80%;
+  z-index: 0;
+}
+.isbn-input .search {
+  display: flex;
+  width: 100%;
+  height: 60vh;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  z-index: 5;
+}
+.isbn-input .search .searchBar {
+  width: 100%;
+  max-width: 500px;
+  margin: 5rem;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  border-radius: 60px;
+  border: 1px #716040 solid;
+  padding: 0.5rem 1rem;
+}
+.isbn-input .search .searchBar input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  font-size: 1rem;
+}
+.isbn-input .search .searchBar input::-moz-placeholder {
+  color: #020826;
+  opacity: 50%;
+}
+.isbn-input .search .searchBar input::placeholder {
+  color: #020826;
+  opacity: 50%;
+}
+.isbn-input .search .searchBar .searchBtn {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  border: none;
+  background-color: #8c7851;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.isbn-input .search .searchBar .searchBtn i {
+  font-size: 1.5rem;
+  color: #fffffe;
+}
+.isbn-input .search .searchBar .searchBtn:hover {
+  opacity: 80%;
+}
+.isbn-input .search .card {
+  background: #fffffe;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  background-color: #f9f4ef;
+  border-radius: 15px;
+  border: #716040 2px solid;
+}
+.isbn-input .search .card .add-book {
+  border: none;
+  background-color: transparent;
+}
+.isbn-input .search .card .add-book i {
+  font-size: 2rem;
+  color: #020826;
+}
+
+.book-data .bgPic {
+  width: 100vw;
+  min-height: 85vh;
+  position: relative;
+  background-image: url(../images/Reading\ glasses-cuate.png);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.book-data .bgPic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fffffe;
+  opacity: 80%;
+  z-index: 0;
+}
+.book-data .manualForm {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  height: 55vh;
+  background: rgba(255, 255, 254, 0.8);
+  border: 2px solid #716040;
+  padding: 1.5rem;
+  border-radius: 20px;
+}
+.book-data .manualForm .errorMsg {
+  color: #f25042;
+}
+.book-data .manualForm .inputContainer {
+  width: 100%;
+  max-width: 500px;
+  margin: 0.5rem;
+  border-bottom: #020826 2px solid;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.book-data .manualForm .inputContainer label {
+  font-weight: 600;
+}
+.book-data .manualForm .inputContainer #bookTitle,
+.book-data .manualForm .inputContainer #bookAuthor {
+  background: transparent;
+  border: 0;
+  outline: none;
+  flex: 1;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+.book-data .manualForm .cover {
+  width: 30%;
+  background: none;
+  border: none;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.book-data .manualForm .cover .cover-box {
+  width: 100%;
+  height: 90%;
+  overflow: hidden;
+  position: relative;
+}
+.book-data .manualForm .cover .cover-box img {
+  z-index: -1;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.book-data .manualForm .cover .cover-box label {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border: 2px dashed gray;
+  color: gray;
+}
+.book-data .manualForm .cover .cover-box #bookCover {
+  display: none;
+}
+.book-data .manualForm .status {
+  border: none;
+  display: flex;
+  justify-content: space-between;
+}
+.book-data .manualForm .submitBtn {
+  width: 100%;
+  height: 10%;
+  margin: 0.5rem;
+  background-color: #8c7851;
+  color: #fffffe;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.book-note {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 90vh;
+}
+.book-note .form {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: 20px;
+  position: relative;
+}
+.book-note .form .closeBtn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.book-note .form .closeBtn i {
+  color: #020826;
+  font-size: 2rem;
+}
+.book-note .form .errorMsg {
+  color: #f25042;
+}
+.book-note .form .inputContainer {
+  width: 100%;
+  max-width: 500px;
+  margin: 0.5rem;
+  border-bottom: #020826 2px solid;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.book-note .form .inputContainer label {
+  font-weight: 600;
+}
+.book-note .form .inputContainer .textInput {
+  background: transparent;
+  border: 0;
+  outline: none;
+  flex: 1;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+.book-note .form .excerpt-input {
+  display: flex;
+  height: 30%;
+  width: 100%;
+  gap: 1rem;
+}
+.book-note .form .excerpt-input .input {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.book-note .form .excerpt-input .input textarea {
+  flex: 1;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+.book-note .form .excerpt-input .input label {
+  margin-top: 1.5rem;
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+.book-note .form .excerpt-input .input input {
+  height: 100%;
+  width: 5rem;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+.book-note .form .excerpt-input .paragraph {
+  flex: 1;
+}
+.book-note .form .note {
+  flex: 1;
+  height: 40%;
+  width: 100%;
+  margin: 1rem 0rem;
+}
+.book-note .form .note label {
+  margin: 0.5rem;
+  font-weight: 600;
+}
+.book-note .form .note textarea {
+  width: 100%;
+  height: 80%;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+.book-note .form .cover {
+  width: 30%;
+  background: none;
+  border: none;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.book-note .form .cover .cover-box {
+  width: 100%;
+  height: 90%;
+  overflow: hidden;
+  position: relative;
+}
+.book-note .form .cover .cover-box img {
+  z-index: -1;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.book-note .form .cover .cover-box label {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border: 2px dashed gray;
+  color: gray;
+}
+.book-note .form .cover .cover-box #bookCover {
+  display: none;
+}
+.book-note .form .status {
+  border: none;
+  display: flex;
+  justify-content: space-between;
+}
+.book-note .form .submitBtn {
+  width: 100%;
+  height: 10%;
+  margin: 0.5rem;
+  background-color: #8c7851;
+  color: #fffffe;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  cursor: pointer;
+}
+.book-note .info-excerpt {
+  max-width: 100%;
+  height: 90vh;
+  padding: 2rem;
+  padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.book-note .info-excerpt .info {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  min-width: 400px;
+  height: 100%;
+  background-color: #eaddcf;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+.book-note .info-excerpt .info .bookCover {
+  height: 50%;
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.book-note .info-excerpt .info .bookCover .coverBg img {
+  width: 225px;
+  height: 300px;
+  border: 2px solid #020826;
+}
+.book-note .info-excerpt .info .bookInfo {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.book-note .info-excerpt .info .bookInfo .info-container {
+  flex: 1;
+}
+.book-note .info-excerpt .info .bookInfo .info-container .bookTitle {
+  margin-bottom: 1rem;
+  height: 40%;
+  color: #020826;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.book-note .info-excerpt .info .bookInfo .info-container .bookAuthor {
+  color: #020826;
+  opacity: 50%;
+  margin-bottom: 0.5rem;
+}
+.book-note .info-excerpt .info .bookInfo .edit {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.book-note .info-excerpt .info .bookInfo .edit button {
+  width: 50%;
+  height: 75%;
+  border: none;
+  background-color: #8c7851;
+  color: #fffffe;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.book-note .info-excerpt .excerpt {
+  flex: 1;
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.book-note .info-excerpt .excerpt .excerpt-title {
+  height: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+.book-note .info-excerpt .excerpt .excerpt-title h2 {
+  flex: 1;
+}
+.book-note .info-excerpt .excerpt .excerpt-title button {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.book-note .info-excerpt .excerpt .excerpt-title button i {
+  font-size: 2rem;
+}
+.book-note .info-excerpt .excerpt hr {
+  border-top: 2px solid #020826;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards {
+  flex: 1;
+  padding: 1rem 0.5rem;
+  width: 100%;
+  height: 95%;
+  margin-top: 1rem;
+  overflow: scroll;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards .cards {
+  min-height: 100%;
+  max-width: 100%;
+  -moz-column-count: 2;
+       column-count: 2;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  transition: all 0.5s ease-out;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards .cards .card {
+  box-sizing: border-box;
+  -moz-column-break-inside: avoid;
+       break-inside: avoid;
+  margin: 0 auto 1rem;
+  border: #020826 2px solid;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  animation: add-card 0.25s ease-in;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards .cards .card .paragraph-block {
+  background-color: #716040;
+  color: #fffffe;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards .cards .card .paragraph-block .page-block {
+  opacity: 50%;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards .cards .card .note-block {
+  min-height: 2rem;
+  padding: 1rem;
+  background-color: #fffffe;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards .cards .card .option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 100%;
+  background-color: #f9f4ef;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.25s ease-in;
+  display: flex;
+  justify-content: space-around;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards .cards .card .option i {
+  font-size: 1.25rem;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid #020826;
+  cursor: pointer;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards .cards .card .option .bx-edit-alt {
+  border-left: 2px solid #020826;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards .cards .card .option .bx-edit-alt:hover {
+  background-color: #8c7851;
+  opacity: 80%;
+  color: #fffffe;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards .cards .card .option .bx-trash:hover {
+  background-color: #f25042;
+  color: #fffffe;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards .cards .card:hover > .option {
+  transform: translateY(0);
+  opacity: 1;
+}
+.book-note .info-excerpt .excerpt .excerpt-cards .cards .close {
+  animation: delete-card 0.5s ease-out;
+}
+.book-note .review {
+  max-width: 100%;
+  height: 90vh;
+  border: solid 2px black;
+}
+
+@keyframes add-card {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes delete-card {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+.footer {
+  width: 100%;
+  height: 35vh;
+  background-color: #f9f4ef;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer .social {
+  width: 35vw;
+  display: flex;
+  justify-content: space-between;
+}
+.footer .social a {
+  text-decoration: none;
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50px;
+  border: #716040 solid 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  color: #716040;
+  font-size: 2.5rem;
+  transition: all 0.25s ease;
+}
+.footer .social a i {
+  z-index: 1;
+}
+.footer .social a::before {
+  content: "";
+  background-color: #716040;
+  z-index: 0;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease;
+}
+.footer .social a:hover::before {
+  width: 100%;
+}
+.footer .social a:hover {
+  color: #fffffe;
+}/*# sourceMappingURL=style.css.map */

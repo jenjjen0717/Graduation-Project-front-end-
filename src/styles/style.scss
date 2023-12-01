@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+$themeColor: #fffffe;
+$secondary: #f9f4ef;
+$btnColor: #8c7851;
+$accentColor: #716040;
+$cardBg: #eaddcf;
+$btnText: #fffffe;
+$stroke: #020826;
+$red: #f25042;
+
+body {
+  background-color: $themeColor;
+  position: relative;
+  font-family: "Nunito", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+@import "./nav";
+@import "./floatingBtn";
+@import "./modal";
+@import "./backdrop";
+@import "./breadCrumb";
+@import "./signUp";
+@import "./home";
+@import "./isbn";
+@import "./manual";
+@import "./bookNote";
+@import "./footer";

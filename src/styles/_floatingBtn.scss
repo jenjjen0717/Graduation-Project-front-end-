@@ -1,0 +1,72 @@
+.addBtn {
+  position: fixed;
+  bottom: 3vw;
+  right: 5vw;
+  cursor: pointer;
+  z-index: 500;
+
+  .btn-plus {
+    z-index: 5;
+    box-shadow: 1px 1px 5px $stroke;
+
+    &:hover {
+      opacity: 50%;
+    }
+  }
+
+  .btn {
+    width: 4rem;
+    height: 4rem;
+    background-color: $btnColor;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      height: 100%;
+      color: $btnText;
+    }
+  }
+
+  .floatingBtn {
+    position: absolute;
+    margin: 0;
+    bottom: 4rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: scale(0);
+    transform-origin: 85% bottom;
+
+    .btn-option {
+      background-color: $secondary;
+      border: 2px solid $btnColor;
+      margin: 0.5rem 0rem;
+      text-decoration: none;
+
+      &:hover {
+        opacity: 60%;
+      }
+
+      .btnLabel {
+        position: absolute;
+        right: 5rem;
+        color: $stroke;
+      }
+
+      i {
+        color: $stroke;
+      }
+    }
+  }
+
+  .btn-plus:hover + .floatingBtn,
+  .floatingBtn:hover {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

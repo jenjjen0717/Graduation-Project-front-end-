@@ -1,0 +1,23 @@
+.modal {
+  position: fixed;
+  z-index: 500;
+  top: 25%;
+  left: 35%;
+  width: 500px;
+  height: 55%;
+  background-color: $btnText;
+  border: $accentColor 2px solid;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: all 0.25s ease-out;
+  // animation: pop-up 0.25s ease-out;
+}
+
+@keyframes pop-up {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
