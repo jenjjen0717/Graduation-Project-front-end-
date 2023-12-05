@@ -58,7 +58,7 @@
       padding-left: 0.75rem;
 
       .card {
-        width: 350px;
+        width: 20vw;
         min-width: 350px;
         height: 100%;
         padding: 1.5rem;
@@ -100,6 +100,11 @@
           width: 110px;
           height: 150px;
           background-color: white;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+          }
         }
 
         .status {

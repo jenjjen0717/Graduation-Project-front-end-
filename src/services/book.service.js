@@ -33,7 +33,7 @@ class BookService {
     });
   }
   //manual input
-  postBookInfo(title, author, status) {
+  postBookInfo(fd) {
     let token;
     if (localStorage.getItem("user")) {
       token = JSON.parse(localStorage.getItem("user")).token;
@@ -41,15 +41,11 @@ class BookService {
       token = "";
     }
 
-    return axios.post(
-      API_URL + "/info",
-      { title, author, status },
-      {
-        headers: {
-          Authorization: token,
-        },
-      }
-    );
+    return axios.post(API_URL + "/info", fd, {
+      headers: {
+        Authorization: token,
+      },
+    });
   }
   //book note info
   getInfo(title) {
@@ -85,6 +81,22 @@ class BookService {
       }
     );
   }
+
+  deleteBook(_id) {
+    let token;
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+
+    return axios.delete(API_URL + "/info/" + _id, {
+      headers: {
+        Authorization: token,
+      },
+    });
+  }
+
   //navbar
   searchBook(keyword) {
     let token;

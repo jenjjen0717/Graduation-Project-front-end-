@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
 
 import FloatingBtnComponent from "../components/floatingBtn-component";
-import BackdropComponent from "../components/backdrop-component";
 import BreadCrumbComponent from "../components/breadCrumb-component";
+import ManualFormComponent from "../components/manualForm-component";
+import ModalComponent from "../components/modal-component";
 
 const IsbnComponent = () => {
   let [searchInput, setSearchInput] = useState("");
-  let [searchResult, setSearchResult] = useState(null);
-  let [bookName, setBookName] = useState("");
-  let [author, setAuthor] = useState("");
+  let [searchResult, setSearchResult] = useState();
+
+  let [modalState, setModalState] = useState(false);
+
+  let [cover, setCover] = useState();
+  let [newBook, setNewBook] = useState({
+    uploadCover: "",
+    title: "",
+    author: "",
+    status: "To Read",
+  });
+  let [message, setMessage] = useState("");
 
   const handleSearch = (e) => {
     setSearchInput(e.target.value);
@@ -27,21 +37,12 @@ const IsbnComponent = () => {
           console.log(data);
           if (data.totalItems == 0) {
             setSearchResult(null);
-            setBookName("");
-            setAuthor("");
           } else {
             setSearchResult(data.items[0].volumeInfo);
           }
-          console.log(searchResult + bookName);
-          if (searchResult.subtitle) {
-            setBookName(searchResult.title + "：" + searchResult.subtitle);
-          } else {
-            setBookName(searchResult.title);
-          }
+          // console.log(searchResult + bookName);
 
-          setAuthor(searchResult.authors[0]);
-
-          console.log(searchResult);
+          // console.log(searchResult);
         })
         .catch((e) => {
           console.log(e);
@@ -49,9 +50,24 @@ const IsbnComponent = () => {
     }
   };
 
+  useEffect(() => {
+    console.log(searchResult);
+  }, [searchResult]);
+
   return (
     <div className="isbn-input">
       <BreadCrumbComponent content={"ISBN Search"} />
+      <ModalComponent modalState={modalState} setModalState={setModalState}>
+        <ManualFormComponent
+          cover={cover}
+          setCover={setCover}
+          newBook={newBook}
+          setNewBook={setNewBook}
+          message={message}
+          setMessage={setMessage}
+          setModalState={setModalState}
+        />
+      </ModalComponent>
       <div className="bgPic">
         <div className="search">
           <div className="searchBar">
@@ -75,10 +91,35 @@ const IsbnComponent = () => {
           {searchResult && (
             <div className="card">
               <div className="bookInfo">
-                <p className="bookName">書名：{bookName}</p>
-                <p className="bookAuthor">作者：{author}</p>
+                {!searchResult.subtitle && (
+                  <p className="bookName">書名：{searchResult.title}</p>
+                )}
+                {searchResult.subtitle && (
+                  <p className="bookName">
+                    書名：{searchResult.title} ： {searchResult.subtitle}
+                  </p>
+                )}
+                <p className="bookAuthor">作者：{searchResult.authors[0]}</p>
               </div>
-              <button className="add-book">
+              <button
+                className="add-book"
+                onClick={() => {
+                  setModalState(true);
+                  if (searchResult.subtitle) {
+                    setNewBook({
+                      ...newBook,
+                      title: searchResult.title + "：" + searchResult.subtitle,
+                      author: searchResult.authors[0],
+                    });
+                  } else {
+                    setNewBook({
+                      ...newBook,
+                      title: searchResult.title,
+                      author: searchResult.authors[0],
+                    });
+                  }
+                }}
+              >
                 <i class="bx bxs-plus-square"></i>
               </button>
             </div>

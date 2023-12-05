@@ -140,7 +140,7 @@ body {
   text-decoration: none;
 }
 .addBtn .floatingBtn .btn-option:hover {
-  opacity: 60%;
+  opacity: 80%;
 }
 .addBtn .floatingBtn .btn-option .btnLabel {
   position: absolute;
@@ -225,6 +225,197 @@ body {
 }
 .breadCrumbs .breadCrumb ul li i {
   font-size: 1.5rem;
+}
+
+.text-editor {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.text-editor .toolBar {
+  padding: 0 1rem;
+  min-width: 550pxs;
+  background-color: #f9f4ef;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -5px rgba(255, 255, 255, 0.5) inset, 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.text-editor .toolBar .box {
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.1rem;
+}
+.text-editor .toolBar .box select {
+  padding: 0 0.1rem;
+  width: 3rem;
+  font-size: 0.75rem;
+  height: 2rem;
+}
+.text-editor .toolBar .box .optionBtn {
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.text-editor .toolBar .box .optionBtn i {
+  font-size: 1rem;
+}
+.text-editor .toolBar .box .optionBtn:hover {
+  box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+.text-editor .toolBar .box .optionBtn:focus {
+  box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+.text-editor .toolBar .list-box .optionBtn i {
+  font-size: 1.5rem;
+}
+.text-editor .toolBar .color-box {
+  gap: 0.2rem;
+}
+.text-editor .toolBar .color-box label {
+  align-self: center;
+  cursor: pointer;
+}
+.text-editor .toolBar .color-box label i {
+  font-size: 1.25rem;
+}
+.text-editor .toolBar .color-box input {
+  width: 1.4rem;
+  border: none;
+}
+.text-editor .textfield {
+  flex: 1;
+  width: 100%;
+  border: 2px solid #020826;
+}
+
+.manualForm {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: 20px;
+  position: relative;
+}
+.manualForm .closeBtn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.manualForm .closeBtn i {
+  color: #020826;
+  font-size: 2rem;
+}
+.manualForm .errorMsg {
+  color: #f25042;
+}
+.manualForm .inputContainer {
+  width: 100%;
+  max-width: 500px;
+  margin: 0.5rem;
+  border-bottom: #020826 2px solid;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.manualForm .inputContainer label {
+  font-weight: 600;
+}
+.manualForm .inputContainer #bookTitle,
+.manualForm .inputContainer #bookAuthor {
+  background: transparent;
+  border: 0;
+  outline: none;
+  flex: 1;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+.manualForm .cover {
+  width: 30%;
+  background: none;
+  border: none;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.manualForm .cover .cover-box {
+  width: 100%;
+  height: 90%;
+  overflow: hidden;
+  position: relative;
+}
+.manualForm .cover .cover-box .deleteImg {
+  width: 100%;
+  height: 100%;
+  background-color: #fffffe;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.manualForm .cover .cover-box .deleteImg i {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.manualForm .cover .cover-box .deleteImg:hover {
+  opacity: 75%;
+}
+.manualForm .cover .cover-box img {
+  z-index: -1;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.manualForm .cover .cover-box label {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border: 2px dashed gray;
+  color: gray;
+}
+.manualForm .cover .cover-box #bookCover {
+  display: none;
+}
+.manualForm .status {
+  border: none;
+  display: flex;
+  justify-content: space-between;
+}
+.manualForm .submitBtn {
+  width: 100%;
+  height: 10%;
+  margin: 0.5rem;
+  background-color: #8c7851;
+  color: #fffffe;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.25rem;
+  font-weight: 300;
+  cursor: pointer;
 }
 
 .loginPage {
@@ -413,7 +604,7 @@ body {
   padding-left: 0.75rem;
 }
 .homepage .card-container .cards .card {
-  width: 350px;
+  width: 20vw;
   min-width: 350px;
   height: 100%;
   padding: 1.5rem;
@@ -450,6 +641,10 @@ body {
   width: 110px;
   height: 150px;
   background-color: white;
+  overflow: hidden;
+}
+.homepage .card-container .cards .card .cover img {
+  width: 100%;
 }
 .homepage .card-container .cards .card .status {
   position: absolute;
@@ -653,6 +848,24 @@ body {
   overflow: hidden;
   position: relative;
 }
+.book-data .manualForm .cover .cover-box .deleteImg {
+  width: 100%;
+  height: 100%;
+  background-color: #fffffe;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.book-data .manualForm .cover .cover-box .deleteImg i {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.book-data .manualForm .cover .cover-box .deleteImg:hover {
+  opacity: 75%;
+}
 .book-data .manualForm .cover .cover-box img {
   z-index: -1;
   width: 100%;
@@ -763,6 +976,7 @@ body {
   flex: 1;
   font-size: 1rem;
   padding: 0.5rem;
+  resize: none;
 }
 .book-note .form .excerpt-input .input label {
   margin-top: 1.5rem;
@@ -793,6 +1007,7 @@ body {
   height: 80%;
   font-size: 1rem;
   padding: 0.5rem;
+  resize: none;
 }
 .book-note .form .cover {
   width: 30%;
@@ -848,7 +1063,7 @@ body {
 }
 .book-note .info-excerpt {
   max-width: 100%;
-  height: 90vh;
+  min-height: 90vh;
   padding: 2rem;
   padding-top: 1rem;
   display: flex;
@@ -860,7 +1075,7 @@ body {
   flex-direction: column;
   width: 30%;
   min-width: 400px;
-  height: 100%;
+  min-height: 100%;
   background-color: #eaddcf;
   border-radius: 10px;
   padding: 1.5rem;
@@ -872,10 +1087,18 @@ body {
   justify-content: center;
   align-items: center;
 }
+.book-note .info-excerpt .info .bookCover .coverBg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+}
 .book-note .info-excerpt .info .bookCover .coverBg img {
   width: 225px;
   height: 300px;
-  border: 2px solid #020826;
 }
 .book-note .info-excerpt .info .bookInfo {
   flex: 1;
@@ -902,14 +1125,31 @@ body {
   opacity: 50%;
   margin-bottom: 0.5rem;
 }
-.book-note .info-excerpt .info .bookInfo .edit {
-  height: 20%;
+.book-note .info-excerpt .info .bookInfo .info-container .bookStatus {
+  width: 25%;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #716040;
+  color: #fffffe;
+  box-shadow: 1px 1px 5px #716040;
+}
+.book-note .info-excerpt .info .bookInfo .info-container .Reading {
+  background-color: #f25042;
+  color: #fffffe;
+}
+.book-note .info-excerpt .info .bookInfo .info-container .Finished {
+  background-color: #f9f4ef;
+  color: #020826;
+}
+.book-note .info-excerpt .info .bookInfo .edit-delete {
+  height: 2.5rem;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
-.book-note .info-excerpt .info .bookInfo .edit button {
+.book-note .info-excerpt .info .bookInfo .edit-delete button {
   width: 50%;
   height: 75%;
   border: none;
@@ -919,12 +1159,20 @@ body {
   border-radius: 5px;
   font-size: 1rem;
 }
+.book-note .info-excerpt .info .bookInfo .edit-delete .editBtn:hover {
+  opacity: 80%;
+}
+.book-note .info-excerpt .info .bookInfo .edit-delete .deleteBtn:hover {
+  background-color: #f25042;
+}
 .book-note .info-excerpt .excerpt {
   flex: 1;
   margin-left: 2rem;
   display: flex;
   flex-direction: column;
   height: 100%;
+  max-height: 775px;
+  min-width: 500px;
 }
 .book-note .info-excerpt .excerpt .excerpt-title {
   height: 5%;
@@ -948,6 +1196,21 @@ body {
 }
 .book-note .info-excerpt .excerpt hr {
   border-top: 2px solid #020826;
+}
+.book-note .info-excerpt .excerpt .no-result-message {
+  width: 100%;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.book-note .info-excerpt .excerpt .no-result-message .illustrate {
+  height: 30vh;
+  width: 20vw;
+  background-image: url("../images/Notes-bro.png");
+  background-position: center;
+  background-size: cover;
 }
 .book-note .info-excerpt .excerpt .excerpt-cards {
   flex: 1;
@@ -1039,6 +1302,22 @@ body {
   max-width: 100%;
   height: 90vh;
   border: solid 2px black;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.book-note .review .review-title {
+  height: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+.book-note .review .review-title h2 {
+  flex: 1;
+}
+.book-note .review hr {
+  border-top: 2px solid #020826;
 }
 
 @keyframes add-card {

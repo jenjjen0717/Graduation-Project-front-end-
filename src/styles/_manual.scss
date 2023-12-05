@@ -80,6 +80,27 @@
         overflow: hidden;
         position: relative;
 
+        .deleteImg {
+          width: 100%;
+          height: 100%;
+          background-color: $btnText;
+          opacity: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+
+          i {
+            cursor: pointer;
+            font-size: 1.5rem;
+          }
+
+          &:hover {
+            opacity: 75%;
+          }
+        }
+
         img {
           z-index: -1;
           width: 100%;

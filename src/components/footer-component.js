@@ -21,8 +21,8 @@ const FooterComponent = () => {
         <a href="#" title="Instagram">
           <i className="bx bxl-instagram"></i>
         </a>
-        <a href="#" title="YouTube">
-          <i className="bx bxl-youtube"></i>
+        <a href="#" title="GitHub">
+          <i class="bx bxl-github"></i>
         </a>
         <a href="#" title="Official Website">
           <i className="bx bx-globe"></i>

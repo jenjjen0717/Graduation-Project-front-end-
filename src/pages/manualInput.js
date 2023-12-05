@@ -9,41 +9,54 @@ const ManualInputComponent = () => {
   const navigate = useNavigate();
 
   let [cover, setCover] = useState();
-  let [title, setTitle] = useState("");
-  let [author, setAuthor] = useState("");
-  let [status, setStatus] = useState("To Read");
+  let [newBook, setNewBook] = useState({
+    uploadCover: "",
+    title: "",
+    author: "",
+    status: "To Read",
+  });
   let [message, setMessage] = useState("");
 
   const getImage = (e) => {
+    console.log(e.target.files[0]);
     if (e.target.files[0]) {
       setCover(URL.createObjectURL(e.target.files[0]));
+      setNewBook({ ...newBook, uploadCover: e.target.files[0] });
     }
   };
 
-  const handleTitle = (e) => {
-    setMessage("");
-    setTitle(e.target.value);
+  const deleteImg = () => {
+    setCover();
+    setNewBook({ ...newBook, uploadCover: "" });
   };
 
-  const handleAuthor = (e) => {
-    setMessage("");
-    setAuthor(e.target.value);
+  const uploadImg = () => {
+    const bookCover = document.querySelector("#bookCover");
+    bookCover.click();
   };
 
-  const handleStatus = (e) => {
+  const handleChange = (e) => {
     setMessage("");
-    setStatus(e.target.value);
+    setNewBook({ ...newBook, [e.target.name]: e.target.value });
   };
 
   const postBookInfo = () => {
-    BookService.postBookInfo(title, author, status)
+    const fd = new FormData();
+    if (newBook.uploadCover) {
+      fd.append("cover", newBook.uploadCover);
+    }
+    fd.append("title", newBook.title);
+    fd.append("author", newBook.author);
+    fd.append("status", newBook.status);
+
+    BookService.postBookInfo(fd)
       .then((response) => {
         localStorage.setItem("book", JSON.stringify(response.data));
         navigate("/bookNote");
       })
       .catch((error) => {
         console.log(error);
-        setMessage(error.response.data);
+        setMessage(error.response?.data);
       });
   };
 
@@ -53,13 +66,24 @@ const ManualInputComponent = () => {
       <div className="bgPic">
         <div className="manualForm">
           <div className="cover">
-            <div className="cover-box">
+            <form className="cover-box" encType="multipart/form-data">
+              {cover && (
+                <div className="deleteImg">
+                  <i class="bx bx-trash" onClick={deleteImg}></i>
+                  <i class="bx bx-upload" onClick={uploadImg}></i>
+                </div>
+              )}
               {cover && <img src={cover} />}
               <label htmlFor="bookCover" style={{ opacity: cover ? "0" : "1" }}>
                 <i class="bx bx-upload"></i>
               </label>
-              <input type="file" id="bookCover" onChange={getImage}></input>
-            </div>
+              <input
+                type="file"
+                id="bookCover"
+                accept="image/png, image/jpeg, image/jpg"
+                onChange={getImage}
+              ></input>
+            </form>
           </div>
           {message && <div className="errorMsg">{message}</div>}
           <div className="inputContainer">
@@ -67,7 +91,7 @@ const ManualInputComponent = () => {
             <input
               type="text"
               id="bookTitle"
-              onChange={handleTitle}
+              onChange={handleChange}
               name="title"
             />
           </div>
@@ -76,7 +100,7 @@ const ManualInputComponent = () => {
             <input
               type="text"
               id="bookAuthor"
-              onChange={handleAuthor}
+              onChange={handleChange}
               name="author"
             />
           </div>
@@ -88,7 +112,7 @@ const ManualInputComponent = () => {
                 name="status"
                 value="To Read"
                 defaultChecked
-                onChange={handleStatus}
+                onChange={handleChange}
               />
               <label htmlFor="toRead">To Read</label>
             </div>
@@ -98,7 +122,7 @@ const ManualInputComponent = () => {
                 id="reading"
                 name="status"
                 value="Reading"
-                onChange={handleStatus}
+                onChange={handleChange}
               />
               <label htmlFor="reading">Reading</label>
             </div>
@@ -108,7 +132,7 @@ const ManualInputComponent = () => {
                 id="finished"
                 name="status"
                 value="Finished"
-                onChange={handleStatus}
+                onChange={handleChange}
               />
               <label htmlFor="finished">Finished</label>
             </div>
