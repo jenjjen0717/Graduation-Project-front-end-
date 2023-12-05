@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import BookService from "../services/book.service";
 import ModalComponent from "../components/modal-component";
 import BreadCrumbComponent from "../components/breadCrumb-component";
+import TextEditor from "../components/textEditor";
+import defaultCover from "../images/cover.png";
 
 const BookNoteComponent = () => {
+  const navigate = useNavigate();
+
   let initialData = JSON.parse(localStorage.getItem("book"));
 
   let [modalState, setModalState] = useState(false);
   let [excerptModal, setExcerptModal] = useState(false);
   let [editExcerptModal, setEditExcerptModal] = useState(false);
 
+  let [coverImg, setCoverImg] = useState("");
   let [cover, setCover] = useState();
   let [title, setTitle] = useState(initialData.title);
   let [author, setAuthor] = useState(initialData.author);
@@ -28,8 +34,9 @@ const BookNoteComponent = () => {
   let [message, setMessage] = useState("");
   //edit info form
   const getImage = (e) => {
-    e.preventDefault();
-    setCover(URL.createObjectURL(e.target.files[0]));
+    if (e.target.files[0]) {
+      setCover(URL.createObjectURL(e.target.files[0]));
+    }
   };
   const handleTitle = (e) => {
     setMessage("");
@@ -114,6 +121,14 @@ const BookNoteComponent = () => {
       });
   };
 
+  const deleteBook = () => {
+    let book_id = JSON.parse(localStorage.getItem("book_id"));
+    BookService.deleteBook(book_id).then(() => {
+      window.alert("success");
+      navigate("/home");
+    });
+  };
+
   const addExcerpt = () => {
     let bookTitle = JSON.parse(localStorage.getItem("book")).title;
     BookService.createExcerpt(bookTitle, paragraph, page, note)
@@ -183,6 +198,8 @@ const BookNoteComponent = () => {
     let bookTitle = JSON.parse(localStorage.getItem("book")).title;
     BookService.getInfo(bookTitle)
       .then((data) => {
+        localStorage.setItem("book_id", JSON.stringify(data.data._id));
+        setCoverImg(data.data.cover);
         setExcerptData(data.data.excerpt);
       })
       .catch((error) => {
@@ -367,17 +384,31 @@ const BookNoteComponent = () => {
         <div class="info">
           <div class="bookCover">
             <div className="coverBg">
-              <img src="" alt="" className="cover" />
+              {coverImg && (
+                <img
+                  src={`http://localhost:8080/uploads/` + coverImg}
+                  alt=""
+                  className="cover"
+                />
+              )}
+              {!coverImg && <img src={defaultCover} alt="" className="cover" />}
             </div>
           </div>
           <div class="bookInfo">
             <div className="info-container">
               <h1 className="bookTitle">{initialData.title}</h1>
               <h3 className="bookAuthor">{initialData.author}</h3>
-              <div className="bookStatus">{initialData.status}</div>
+              <div className={`bookStatus ${initialData.status}`}>
+                {initialData.status}
+              </div>
             </div>
-            <div className="edit">
-              <button onClick={openEditModal}>Edit</button>
+            <div className="edit-delete">
+              <button onClick={openEditModal} className="editBtn">
+                Edit
+              </button>
+              <button onClick={deleteBook} className="deleteBtn">
+                Delete
+              </button>
             </div>
           </div>
         </div>
@@ -389,41 +420,60 @@ const BookNoteComponent = () => {
             </button>
           </div>
           <hr />
-          <div className="excerpt-cards">
-            <div className="cards">
-              {excerptData?.map((excerpt) => (
-                <div className="card" key={excerpt._id}>
-                  <div className="paragraph-block">
-                    {excerpt.paragraph}
-                    <div className="page-block">P.{excerpt.page}</div>
-                  </div>
-                  <div className="note-block">{excerpt.note}</div>
-                  {/* <div className="optionBtn">
+          {excerptData?.length == 0 && (
+            <div className="no-result-message">
+              <div className="illustrate">
+                <img src="" alt="" />
+              </div>
+              <div className="no-result">
+                這本書還沒有筆記，快去記錄一條吧！
+              </div>
+            </div>
+          )}
+          {excerptData && (
+            <div className="excerpt-cards">
+              <div className="cards">
+                {excerptData?.map((excerpt) => (
+                  <div className="card" key={excerpt._id}>
+                    <div className="paragraph-block">
+                      {excerpt.paragraph}
+                      <div className="page-block">P.{excerpt.page}</div>
+                    </div>
+                    <div className="note-block">{excerpt.note}</div>
+                    {/* <div className="optionBtn">
                     <i class="bx bx-dots-vertical-rounded "></i>
                   </div> */}
 
-                  <div className="option">
-                    <i
-                      class="bx bx-trash"
-                      onClick={deleteExcerpt}
-                      id={excerpt._id}
-                    ></i>
-                    <i
-                      class="bx bx-edit-alt"
-                      onClick={openEditExcerpt}
-                      data-p={excerpt.paragraph}
-                      data-page={excerpt.page}
-                      data-note={excerpt.note}
-                      id={excerpt._id}
-                    ></i>
+                    <div className="option">
+                      <i
+                        class="bx bx-trash"
+                        onClick={deleteExcerpt}
+                        id={excerpt._id}
+                      ></i>
+                      <i
+                        class="bx bx-edit-alt"
+                        onClick={openEditExcerpt}
+                        data-p={excerpt.paragraph}
+                        data-page={excerpt.page}
+                        data-note={excerpt.note}
+                        id={excerpt._id}
+                      ></i>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
-      <div className="review"></div>
+      <div className="review">
+        <div className="review-title">
+          <h2>Review</h2>
+        </div>
+        <hr />
+        <br />
+        <TextEditor />
+      </div>
     </div>
   );
 };

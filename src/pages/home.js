@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import FloatingBtnComponent from "../components/floatingBtn-component";
 import BookService from "../services/book.service";
+import defaultCover from "../images/cover.png";
 
 const HomeComponent = (props) => {
   const navigate = useNavigate();
@@ -12,10 +13,11 @@ const HomeComponent = (props) => {
   let { bookData, setBookData } = props;
 
   const viewBookNote = (e) => {
-    console.log(e.target.dataset.title);
+    // console.log(e.target.dataset.title);
     localStorage.setItem(
       "book",
       JSON.stringify({
+        cover: e.target.dataset.cover,
         title: e.target.dataset.title,
         author: e.target.dataset.author,
         status: e.target.dataset.status,
@@ -67,9 +69,18 @@ const HomeComponent = (props) => {
                   <div className="author">{book.author}</div>
                 </div>
                 <div className={`status ${book.status}`}>{book.status}</div>
-                <div className="cover"></div>
+                <div className="cover">
+                  {book.cover && (
+                    <img
+                      src={`http://localhost:8080/uploads/` + book.cover}
+                      alt=""
+                    />
+                  )}
+                  {!book.cover && <img src={defaultCover} />}
+                </div>
                 <div
                   className="handleLayer"
+                  data-cover={book.cover}
                   data-title={book.title}
                   data-author={book.author}
                   data-status={book.status}
@@ -99,9 +110,18 @@ const HomeComponent = (props) => {
                   <div className="author">{book.author}</div>
                 </div>
                 <div className={`status ${book.status}`}>{book.status}</div>
-                <div className="cover"></div>
+                <div className="cover">
+                  {book.cover && (
+                    <img
+                      src={`http://localhost:8080/uploads/` + book.cover}
+                      alt=""
+                    />
+                  )}
+                  {!book.cover && <img src={defaultCover} />}
+                </div>
                 <div
                   className="handleLayer"
+                  data-cover={book.cover}
                   data-title={book.title}
                   data-author={book.author}
                   data-status={book.status}
