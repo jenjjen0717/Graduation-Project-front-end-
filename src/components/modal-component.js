@@ -36,7 +36,7 @@ const ModalComponent = (props) => {
         className="modal"
         style={{
           transform: editExcerptModal ? "scale(1)" : "scale(0)",
-          opacity: editExcerptModal ? "1" : "0",
+          display: editExcerptModal ? "inline" : "none",
         }}
       >
         {props.children}
