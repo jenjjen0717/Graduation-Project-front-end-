@@ -1,83 +1,147 @@
 .text-editor {
-  width: 50%;
-  //   border: 2px solid black;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-content: center;
+  padding: 0 2rem;
   flex: 1;
+  position: relative;
 
   .toolBar {
     padding: 0 1rem;
-    min-width: 550pxs;
     background-color: $secondary;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    border-radius: 5px;
-    box-shadow: 5px 5px 15px -5px rgba(255, 255, 255, 0.5) inset,
-      5px 5px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px solid gray;
 
-    .box {
-      padding: 0.25rem;
+    .tool {
+      display: flex;
+      .box {
+        padding: 0.25rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 0.1rem;
+
+        select {
+          padding: 0 0.1rem;
+          width: 3rem;
+          font-size: 0.75rem;
+          height: 2rem;
+        }
+
+        .optionBtn {
+          border: none;
+          width: 2.5rem;
+          height: 2.5rem;
+          text-align: center;
+          background-color: transparent;
+          cursor: pointer;
+          border-radius: 5px;
+
+          i {
+            font-size: 1rem;
+          }
+
+          &:hover {
+            box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
+          }
+          &:focus {
+            box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
+          }
+        }
+      }
+      .list-box {
+        .optionBtn {
+          i {
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+
+    .other-btn {
+      gap: 0.5rem;
       display: flex;
       align-items: center;
-      flex-wrap: nowrap;
-      gap: 0.1rem;
 
-      select {
-        padding: 0 0.1rem;
-        width: 3rem;
-        font-size: 0.75rem;
-        height: 2rem;
-      }
-
-      .optionBtn {
+      .save-btn {
+        background-color: $btnColor;
+        color: $btnText;
         border: none;
-        width: 2.5rem;
-        height: 2.5rem;
-        text-align: center;
-        background-color: transparent;
-        cursor: pointer;
+        height: 2rem;
+        padding: 0.5rem;
         border-radius: 5px;
-
-        i {
-          font-size: 1rem;
-        }
+        cursor: pointer;
 
         &:hover {
-          box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
+          opacity: 80%;
         }
-        &:focus {
-          box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
-        }
-      }
-    }
-    .list-box {
-      .optionBtn {
-        i {
-          font-size: 1.5rem;
-        }
-      }
-    }
-    .color-box {
-      gap: 0.2rem;
-      label {
-        align-self: center;
-        cursor: pointer;
-
-        i {
-          font-size: 1.25rem;
-        }
-      }
-
-      input {
-        width: 1.4rem;
-        border: none;
       }
     }
   }
 
-  .textfield {
+  .textfield-preview {
+    display: flex;
     flex: 1;
+    max-height: 675px;
+
+    .textfield {
+      width: 50%;
+      resize: none;
+      height: 100%;
+      border-top: none;
+      background-color: #f8f8fa;
+      border-right: none;
+      outline: none;
+      padding: 2rem;
+      overflow: scroll;
+    }
+
+    .preview {
+      width: 50%;
+      height: 100%;
+      border: 1px solid $stroke;
+      border-top: none;
+      padding: 2rem;
+      overflow: scroll;
+      // transition: all 0.5s ease;
+    }
+  }
+
+  .saved-success-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    border: 2px solid $stroke;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .popup {
+      width: 10rem;
+      height: 5rem;
+      border: 1px solid $accentColor;
+      border-radius: 10px;
+      background-color: transparent;
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+
+      i {
+        width: 3rem;
+        font-size: 3rem;
+        color: green;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
   }
 }

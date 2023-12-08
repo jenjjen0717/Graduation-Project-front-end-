@@ -24,9 +24,12 @@ body {
   position: sticky;
   top: 0;
 }
+.header .logo {
+  width: 10vw;
+}
 .header .logo a {
   width: 100%;
-  height: 10vh;
+  height: 100%;
   font-size: 1.25rem;
   font-weight: bolder;
   color: #716040;
@@ -73,6 +76,7 @@ body {
   opacity: 0;
   width: 0;
   transition: all 0.25s linear;
+  outline: none;
 }
 .header nav .navItem .search-bar .search .search-expanded {
   width: 15vw;
@@ -178,6 +182,46 @@ body {
     transform: scale(1);
   }
 }
+.delete-check-modal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+}
+.delete-check-modal .modal-box {
+  width: 25rem;
+  height: 10rem;
+  background-color: #fffffe;
+  border: #716040 2px solid;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.delete-check-modal .modal-box .cancel-yes {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.delete-check-modal .modal-box .cancel-yes .cancel {
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: #f25042;
+  color: #fffffe;
+  cursor: pointer;
+}
+.delete-check-modal .modal-box .cancel-yes .yes {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
 .backdrop {
   width: 100%;
   height: 100%;
@@ -228,34 +272,40 @@ body {
 }
 
 .text-editor {
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-content: center;
+  padding: 0 2rem;
   flex: 1;
+  position: relative;
 }
 .text-editor .toolBar {
   padding: 0 1rem;
-  min-width: 550pxs;
   background-color: #f9f4ef;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  border-radius: 5px;
-  box-shadow: 5px 5px 15px -5px rgba(255, 255, 255, 0.5) inset, 5px 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px 5px 0 0;
+  border-bottom: 1px solid gray;
 }
-.text-editor .toolBar .box {
+.text-editor .toolBar .tool {
+  display: flex;
+}
+.text-editor .toolBar .tool .box {
   padding: 0.25rem;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
   gap: 0.1rem;
 }
-.text-editor .toolBar .box select {
+.text-editor .toolBar .tool .box select {
   padding: 0 0.1rem;
   width: 3rem;
   font-size: 0.75rem;
   height: 2rem;
 }
-.text-editor .toolBar .box .optionBtn {
+.text-editor .toolBar .tool .box .optionBtn {
   border: none;
   width: 2.5rem;
   height: 2.5rem;
@@ -264,36 +314,89 @@ body {
   cursor: pointer;
   border-radius: 5px;
 }
-.text-editor .toolBar .box .optionBtn i {
+.text-editor .toolBar .tool .box .optionBtn i {
   font-size: 1rem;
 }
-.text-editor .toolBar .box .optionBtn:hover {
+.text-editor .toolBar .tool .box .optionBtn:hover {
   box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
-.text-editor .toolBar .box .optionBtn:focus {
+.text-editor .toolBar .tool .box .optionBtn:focus {
   box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
-.text-editor .toolBar .list-box .optionBtn i {
-  font-size: 1.5rem;
-}
-.text-editor .toolBar .color-box {
-  gap: 0.2rem;
-}
-.text-editor .toolBar .color-box label {
-  align-self: center;
-  cursor: pointer;
-}
-.text-editor .toolBar .color-box label i {
+.text-editor .toolBar .tool .list-box .optionBtn i {
   font-size: 1.25rem;
 }
-.text-editor .toolBar .color-box input {
-  width: 1.4rem;
-  border: none;
+.text-editor .toolBar .other-btn {
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
 }
-.text-editor .textfield {
+.text-editor .toolBar .other-btn .save-btn {
+  background-color: #8c7851;
+  color: #fffffe;
+  border: none;
+  height: 2rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.text-editor .toolBar .other-btn .save-btn:hover {
+  opacity: 80%;
+}
+.text-editor .textfield-preview {
+  display: flex;
   flex: 1;
+  max-height: 675px;
+}
+.text-editor .textfield-preview .textfield {
+  width: 50%;
+  resize: none;
+  height: 100%;
+  border-top: none;
+  background-color: #f8f8fa;
+  border-right: none;
+  outline: none;
+  padding: 2rem;
+  overflow: scroll;
+}
+.text-editor .textfield-preview .preview {
+  width: 50%;
+  height: 100%;
+  border: 1px solid #020826;
+  border-top: none;
+  padding: 2rem;
+  overflow: scroll;
+}
+.text-editor .saved-success-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  border: 2px solid #020826;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-editor .saved-success-popup .popup {
+  width: 10rem;
+  height: 5rem;
+  border: 1px solid #716040;
+  border-radius: 10px;
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.text-editor .saved-success-popup .popup i {
+  width: 3rem;
+  font-size: 3rem;
+  color: green;
+}
+.text-editor .saved-success-popup .popup p {
+  font-size: 1.5rem;
 }
 
 .manualForm {
@@ -910,6 +1013,7 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
   min-height: 90vh;
+  position: relative;
 }
 .book-note .form {
   z-index: 1;
@@ -1064,7 +1168,7 @@ body {
 .book-note .info-excerpt {
   max-width: 100%;
   min-height: 90vh;
-  padding: 2rem;
+  padding: 2rem 3rem;
   padding-top: 1rem;
   display: flex;
   flex-wrap: wrap;
@@ -1078,7 +1182,7 @@ body {
   min-height: 100%;
   background-color: #eaddcf;
   border-radius: 10px;
-  padding: 1.5rem;
+  padding: 2rem;
 }
 .book-note .info-excerpt .info .bookCover {
   height: 50%;
@@ -1301,10 +1405,9 @@ body {
 .book-note .review {
   max-width: 100%;
   height: 90vh;
-  border: solid 2px black;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1rem 3rem;
 }
 .book-note .review .review-title {
   height: 5%;

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import BookService from "../services/book.service";
 import ModalComponent from "../components/modal-component";
+import DeleteCheckComponent from "../components/deleteCheck-component";
 import BreadCrumbComponent from "../components/breadCrumb-component";
 import TextEditor from "../components/textEditor";
 import defaultCover from "../images/cover.png";
@@ -15,6 +16,7 @@ const BookNoteComponent = () => {
   let [modalState, setModalState] = useState(false);
   let [excerptModal, setExcerptModal] = useState(false);
   let [editExcerptModal, setEditExcerptModal] = useState(false);
+  let [deleteChecked, setDeleteChecked] = useState(false);
 
   let [coverImg, setCoverImg] = useState("");
   let [cover, setCover] = useState();
@@ -30,6 +32,8 @@ const BookNoteComponent = () => {
   let [editP, setEditP] = useState("");
   let [editPage, setEditPage] = useState(0);
   let [editNote, setEditNote] = useState("");
+
+  let [review, setReview] = useState("");
 
   let [message, setMessage] = useState("");
   //edit info form
@@ -121,12 +125,8 @@ const BookNoteComponent = () => {
       });
   };
 
-  const deleteBook = () => {
-    let book_id = JSON.parse(localStorage.getItem("book_id"));
-    BookService.deleteBook(book_id).then(() => {
-      window.alert("success");
-      navigate("/home");
-    });
+  const deleteBookModal = () => {
+    setDeleteChecked(true);
   };
 
   const addExcerpt = () => {
@@ -201,6 +201,9 @@ const BookNoteComponent = () => {
         localStorage.setItem("book_id", JSON.stringify(data.data._id));
         setCoverImg(data.data.cover);
         setExcerptData(data.data.excerpt);
+        if (data.data.review) {
+          setReview(data.data.review);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -380,6 +383,12 @@ const BookNoteComponent = () => {
         </div>
       </ModalComponent>
 
+      <DeleteCheckComponent
+        title={title}
+        deleteChecked={deleteChecked}
+        setDeleteChecked={setDeleteChecked}
+      />
+
       <div class="info-excerpt">
         <div class="info">
           <div class="bookCover">
@@ -406,7 +415,7 @@ const BookNoteComponent = () => {
               <button onClick={openEditModal} className="editBtn">
                 Edit
               </button>
-              <button onClick={deleteBook} className="deleteBtn">
+              <button onClick={deleteBookModal} className="deleteBtn">
                 Delete
               </button>
             </div>
@@ -472,7 +481,7 @@ const BookNoteComponent = () => {
         </div>
         <hr />
         <br />
-        <TextEditor />
+        <TextEditor review={review} setReview={setReview} />
       </div>
     </div>
   );

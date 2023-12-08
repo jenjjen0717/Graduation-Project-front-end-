@@ -3,6 +3,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   min-height: 90vh;
+  position: relative;
 
   .form {
     z-index: 1;
@@ -185,7 +186,7 @@
     max-width: 100%;
     min-height: 90vh;
     // border: solid 2px black;
-    padding: 2rem;
+    padding: 2rem 3rem;
     padding-top: 1rem;
     display: flex;
     flex-wrap: wrap;
@@ -200,7 +201,7 @@
       // border: 2px $accentColor solid;
       background-color: $cardBg;
       border-radius: 10px;
-      padding: 1.5rem;
+      padding: 2rem;
 
       .bookCover {
         // border: blue 2px solid;
@@ -471,10 +472,10 @@
   .review {
     max-width: 100%;
     height: 90vh;
-    border: solid 2px black;
+    // border: solid 2px black;
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 1rem 3rem;
 
     .review-title {
       height: 5%;
