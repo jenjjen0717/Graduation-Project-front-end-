@@ -40,6 +40,7 @@ const NavComponent = (props) => {
   const handleLogout = async () => {
     await AuthService.logout();
     setCurrentUser(null);
+    localStorage.removeItem("book");
     navigate("/", { replace: true });
   };
 

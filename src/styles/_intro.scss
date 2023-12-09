@@ -1,0 +1,218 @@
+.intro {
+  min-height: 90vh;
+  width: 100%;
+
+  .heading {
+    display: flex;
+    height: 90vh;
+    padding: 2rem;
+    padding-left: 4rem;
+    position: relative;
+    overflow: hidden;
+
+    .illustration-bg {
+      background-image: url("../images/Poetry-bro-bg.png");
+      background-position: center;
+      background-size: 90%;
+      background-repeat: no-repeat;
+      height: 100%;
+      width: 55%;
+      position: absolute;
+      top: 0;
+      right: 13rem;
+      z-index: -1;
+    }
+
+    .theme-title {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+
+      .title {
+        h1 {
+          color: $stroke;
+        }
+
+        .en-title {
+          text-align: left;
+          font-size: 120px;
+        }
+        .cn-title {
+          text-align: right;
+          font-size: 55px;
+          font-weight: 200;
+        }
+      }
+
+      .sign-up {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        button {
+          background-color: $btnColor;
+          color: $btnText;
+          border: none;
+          padding: 0.5rem 1rem;
+          border-radius: 5px;
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+
+        p {
+          align-self: center;
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .illustration {
+      background-image: url("../images/Poetry-bro.png");
+      background-position: center;
+      background-size: 90%;
+      background-repeat: no-repeat;
+      height: 100%;
+      width: 55%;
+    }
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to top, $btnText, transparent);
+      z-index: 10;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .tutorial {
+    width: 100%;
+    height: 90vh;
+    padding: 3rem 5rem;
+    display: flex;
+    // gap: 1rem;
+    overflow: hidden;
+    position: relative;
+
+    .left {
+      width: 55%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: -85px;
+      transform: skewX(-10deg);
+    }
+
+    .right {
+      width: 55%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: -85px;
+      transform: skewX(-10deg);
+    }
+
+    .specific {
+      height: 100%;
+      .content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .description {
+          flex: 1;
+          padding: 2rem;
+          display: flex;
+          align-items: center;
+          font-size: 1.5rem;
+        }
+
+        .d-left {
+          justify-content: right;
+        }
+
+        .image {
+          height: 55%;
+          overflow: hidden;
+          object-fit: cover;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to top, $btnText, transparent);
+      z-index: 10;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .get-started {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+
+    .illustration {
+      width: 30%;
+      height: 40%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .started {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      height: 20%;
+      justify-content: space-evenly;
+      align-items: center;
+
+      h1 {
+        font-size: 50px;
+      }
+
+      button {
+        height: 20%;
+        width: 60%;
+        background-color: $btnColor;
+        color: $btnText;
+        border: none;
+        border-radius: 5px;
+      }
+    }
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 90vh;
+      background: linear-gradient(
+        0deg,
+        rgba(249, 244, 239, 1) 0%,
+        rgba(249, 244, 239, 0.1) 70%,
+        rgba(255, 255, 254, 0) 100%
+      );
+      z-index: -1;
+      position: absolute;
+    }
+  }
+}
