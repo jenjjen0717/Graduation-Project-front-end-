@@ -6,7 +6,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  flex-direction: column;
+  gap: 2rem;
   .social {
     width: 35vw;
     display: flex;
@@ -51,6 +52,18 @@
       &:hover {
         color: $btnText;
       }
+    }
+  }
+
+  .divider {
+    width: 40vw;
+    border: 1px solid $accentColor;
+  }
+
+  .illustration-license {
+    a {
+      text-decoration: none;
+      color: $stroke;
     }
   }
 }

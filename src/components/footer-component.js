@@ -28,6 +28,16 @@ const FooterComponent = () => {
           <i className="bx bx-globe"></i>
         </a>
       </div>
+      <div className="divider"></div>
+      <div className="illustration-license">
+        <a href="https://storyset.com/imagination">
+          Imagination illustrations by Storyset
+        </a>
+      </div>
+      <div className="copyright">
+        <i class="bx bx-copyright"></i>
+        Jane Fu 2023
+      </div>
     </div>
   );
 };

@@ -521,6 +521,192 @@ body {
   cursor: pointer;
 }
 
+.intro {
+  min-height: 90vh;
+  width: 100%;
+}
+.intro .heading {
+  display: flex;
+  height: 90vh;
+  padding: 2rem;
+  padding-left: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.intro .heading .illustration-bg {
+  background-image: url("../images/Poetry-bro-bg.png");
+  background-position: center;
+  background-size: 90%;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 55%;
+  position: absolute;
+  top: 0;
+  right: 13rem;
+  z-index: -1;
+}
+.intro .heading .theme-title {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+.intro .heading .theme-title .title h1 {
+  color: #020826;
+}
+.intro .heading .theme-title .title .en-title {
+  text-align: left;
+  font-size: 120px;
+}
+.intro .heading .theme-title .title .cn-title {
+  text-align: right;
+  font-size: 55px;
+  font-weight: 200;
+}
+.intro .heading .theme-title .sign-up {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.intro .heading .theme-title .sign-up button {
+  background-color: #8c7851;
+  color: #fffffe;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.intro .heading .theme-title .sign-up p {
+  align-self: center;
+  font-size: 1.5rem;
+}
+.intro .heading .illustration {
+  background-image: url("../images/Poetry-bro.png");
+  background-position: center;
+  background-size: 90%;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 55%;
+}
+.intro .heading::before {
+  content: "";
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to top, #fffffe, transparent);
+  z-index: 10;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.intro .tutorial {
+  width: 100%;
+  height: 90vh;
+  padding: 3rem 5rem;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+.intro .tutorial .left {
+  width: 55%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -85px;
+  transform: skewX(-10deg);
+}
+.intro .tutorial .right {
+  width: 55%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: -85px;
+  transform: skewX(-10deg);
+}
+.intro .tutorial .specific {
+  height: 100%;
+}
+.intro .tutorial .specific .content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.intro .tutorial .specific .content .description {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+.intro .tutorial .specific .content .d-left {
+  justify-content: right;
+}
+.intro .tutorial .specific .content .image {
+  height: 55%;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.intro .tutorial .specific .content .image img {
+  width: 100%;
+}
+.intro .tutorial::before {
+  content: "";
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to top, #fffffe, transparent);
+  z-index: 10;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.intro .get-started {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.intro .get-started .illustration {
+  width: 30%;
+  height: 40%;
+  overflow: hidden;
+}
+.intro .get-started .illustration img {
+  width: 100%;
+}
+.intro .get-started .started {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.intro .get-started .started h1 {
+  font-size: 50px;
+}
+.intro .get-started .started button {
+  height: 20%;
+  width: 60%;
+  background-color: #8c7851;
+  color: #fffffe;
+  border: none;
+  border-radius: 5px;
+}
+.intro .get-started::before {
+  content: "";
+  width: 100%;
+  height: 90vh;
+  background: linear-gradient(0deg, rgb(249, 244, 239) 0%, rgba(249, 244, 239, 0.1) 70%, rgba(255, 255, 254, 0) 100%);
+  z-index: -1;
+  position: absolute;
+}
+
 .loginPage {
   position: relative;
 }
@@ -1448,6 +1634,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 2rem;
 }
 .footer .social {
   width: 35vw;
@@ -1488,4 +1676,12 @@ body {
 }
 .footer .social a:hover {
   color: #fffffe;
+}
+.footer .divider {
+  width: 40vw;
+  border: 1px solid #716040;
+}
+.footer .illustration-license a {
+  text-decoration: none;
+  color: #020826;
 }/*# sourceMappingURL=style.css.map */
